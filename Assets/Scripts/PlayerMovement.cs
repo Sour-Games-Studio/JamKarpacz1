@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private float dashDistance = 5f;
     public Transform Center;
 
+
+
     public float health = 6;
-    private float dmgTimer = 1f;
+    private float maxHealth;
+    private bool isInvincible = false;
+    private bool canDash = true;
 
 
     void Start()
@@ -20,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         meleeAttack = GetComponent<MeleeAttack>();
         rangedAttack = GetComponent<RangedAttack>();
+        maxHealth = health;
     }
 
     void Update()
@@ -40,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             rangedAttack.TryAttack(ReturnAngle());
         }
 
-        Debug.Log(health);
+        //Debug.Log(health);
 
     }
 
@@ -56,10 +62,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 inputs = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection = new Vector3(inputs.x, 0, inputs.z);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             Dash(moveDirection);
-            
+            StartCoroutine(DashCooldown());
+            StartCoroutine(InvincibilityFrames(1.5f));
         }
         
     }
@@ -115,21 +122,6 @@ private float RemapLeftSideAngles(float angle)
     return angle;
 }
 
-private void OnTriggerStay(Collider other)
- {
-     if (CompareTag("Enemy"))
-     {
-         if (dmgTimer > 0)
-         {
-             dmgTimer -= Time.deltaTime;
-         }
-         else if (dmgTimer <= 0)
-         {
-             health -= 1;
-         }
-     }
- } 
- 
 // private void OnTriggerEnter(Collider other)
 // {
 //     Debug.Log("Got damaged");
@@ -142,9 +134,56 @@ private void OnTriggerStay(Collider other)
 
 public void TakeDamagePlayer(float damage)
 {
-    
-    health -= damage;
-    Debug.Log("Player took " + damage + " damage");
-    Debug.Log(health + "health after takedamage");
+    if(!isInvincible){
+        health -= damage;
+        //Debug.Log("Player took " + damage + " damage");
+        //Debug.Log(health + "health after takedamage");
+        StartCoroutine(InvincibilityFrames(2f));
+    }
+    if (health < 1)
+    {
+        Destroy(this.gameObject);
+        //play game over screen
+    }
 }
+    private IEnumerator InvincibilityFrames(float seconds)
+    {
+        //Debug.Log("Player is invincible");
+        isInvincible = true;
+        yield return new WaitForSeconds(seconds); // 1 second of invincibility
+        isInvincible = false;
+        //Debug.Log("Player is no longer invincible");
+    }
+
+    private IEnumerator DashCooldown()
+    {
+        canDash = false;
+        yield return new WaitForSeconds(1.5f); // 2 second cooldown
+        canDash = true;
+    }
+
+    void updateHealth(float healthGained)
+    {
+        if (health + healthGained > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else
+        {
+            health += healthGained;
+        }
+    }
+
+    void updateMeleeDamage(float damageGained)
+    {
+        meleeAttack.attackDamage += damageGained;
+    }
+    void updateRangedDamage(float damageGained)
+    {
+        rangedAttack.attackDamage += damageGained;
+    }
+    void updateSpeed(float speedGained)
+    {
+        moveSpeed += speedGained;
+    }   
 }
