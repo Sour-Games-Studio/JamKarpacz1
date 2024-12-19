@@ -24,13 +24,19 @@ public class MeleeAttack : MonoBehaviour
     void Attack(float attackDirection)
     {
         // Detect enemies in range of attack
-        Debug.Log(attackDirection + "attackDirection");
+        //Debug.Log(attackDirection + "attackDirection");
         Vector3 attackDirectionVector = new Vector3(Mathf.Cos(attackDirection * Mathf.Deg2Rad), 0, Mathf.Sin(attackDirection * Mathf.Deg2Rad));
-        Debug.Log(attackDirectionVector + "attackDirectionVector");
+        //Debug.Log(attackDirectionVector + "attackDirectionVector");
         Vector3 attackPosition = attackPoint.position + attackDirectionVector * attackRange;
-        Debug.Log(attackPosition + "attackPosition");
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition + new Vector3(1.0f,0,0), attackRange, enemyLayer);
-
+        //Debug.Log(attackPosition + "attackPosition");
+        //Detect enemies in range of the attack
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition, attackRange, enemyLayer);
+        //print whole collider 
+        // foreach (Collider enemy in hitEnemies)
+        // {
+        //     Debug.Log(enemy + "enemy" + enemy.tag);
+        // }
+        //Debug.Log(hitEnemies.Length + "hitEnemies");
         // Play an attack animation
         foreach (Collider enemy in hitEnemies)
         {
@@ -43,9 +49,7 @@ public class MeleeAttack : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
-            return;
-
-        Gizmos.DrawWireSphere(attackPoint.position + new Vector3(1.0f, 0, 0), attackRange);
+        // Draw the attack range
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
