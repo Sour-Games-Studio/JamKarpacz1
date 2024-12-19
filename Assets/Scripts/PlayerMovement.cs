@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isInvincible = false;
     private bool canDash = true;
 
+    public bool canMove = true;
+
 
     void Start()
     {
@@ -30,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
         ProcessInputs();
 
 
