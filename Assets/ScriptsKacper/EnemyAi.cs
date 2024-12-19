@@ -59,6 +59,7 @@ public class EnemyAi : MonoBehaviour
     {
         hp -= damage;
         Debug.Log("Enemy took "+damage+" damage");
+        Debug.Log("Enemy hp: "+hp);
         if (hp<1)
         {
             if (ammoStuck > 0)
@@ -69,6 +70,7 @@ public class EnemyAi : MonoBehaviour
                     Instantiate(ogur, this.transform.position + new Vector3(0,2,0), Quaternion.identity);
                 }
             }
+            Debug.Log("Enemy died");
             Destroy(this.gameObject);
         }
     }
@@ -81,7 +83,7 @@ public class EnemyAi : MonoBehaviour
         {
             if (ammoStuck > 0)
             {
-                GetComponent<RangedAttack>().ammoCurrent += ammoStuck;
+                player.GetComponent<RangedAttack>().ammoCurrent += ammoStuck;
             }
             else if (player.GetComponent<RangedAttack>().ammoCurrent < player.GetComponent<RangedAttack>().ammoMax)
             {

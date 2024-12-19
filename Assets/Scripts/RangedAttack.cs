@@ -12,7 +12,7 @@ public class RangedAttack : MonoBehaviour
     [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
 
-    [SerializeField] public float bulletSpeed = 10f;
+    [SerializeField] public float bulletSpeed = 1000f;
 
     public int ammoMax = 3;
     public int ammoCurrent = 3;

@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
             rangedAttack.TryAttack(ReturnAngle());
         }
 
+        RotateSprite();
+
         //Debug.Log(health);
 
     }
@@ -55,6 +57,14 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = moveDirection * (moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(transform.position + movement);
         
+    }
+
+    void RotateSprite(){
+        float angle = ReturnAngle();
+
+        //depending on angle value, choose one of 8 sprites and return value from 0 to 7 when angle is from -180 to 189
+        int spriteIndex = (int)Mathf.Round((angle + 180) / 45);
+        Debug.Log(spriteIndex);
     }
 
     void ProcessInputs()
