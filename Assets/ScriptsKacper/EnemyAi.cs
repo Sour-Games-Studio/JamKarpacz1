@@ -38,7 +38,7 @@ public class EnemyAi : MonoBehaviour
            currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
             attackSpeedTimer = attackSpeed;          
         }
-        Debug.Log(attackSpeedTimer.ToString());
+  
     }
 
     
