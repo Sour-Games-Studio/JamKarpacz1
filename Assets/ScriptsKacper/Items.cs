@@ -51,21 +51,34 @@ public class Items : MonoBehaviour
                 "Miecz",
                 "Scyzoryk",
                 "Nunczak",
-                "Klon Trurla",
+                "Naostrzona kredka",
+                "Ostrze",
+                "Chwytak",
                 "Nitro",
+                "Silnik",
+                "Paliwo",
+                "Wiatrak",
+                "Opona",
+                "Spoiler",
+                "Czerwona kredka",
+                "Bateria",
+                "Akumulator",
                 "Olej",
+                "Wtyczka",
+                "Trybik",
+                "Zestaw naprawczy",
+                "Smar",
+                "Zielona kredka",
+                "Antena",
+                "Klon Trurla",
             };
         string input;
         if (inputField.text != "")
         {
 
             input = inputField.text;
-            Debug.LogError(words.Count);
-
 
             var filteredWords = words.Where(word => word.StartsWith(input, StringComparison.OrdinalIgnoreCase)).ToList();
-            Debug.Log(filteredWords);
-
 
             for (int i = 0; i < filteredWords.Count; i++)
             {
