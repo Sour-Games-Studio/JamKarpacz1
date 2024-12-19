@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a31e23e82b95143863b6e236ad7298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadText: {fileID: 632187078}
+  LoadTextObject: {fileID: 632187078}
   PressAnyButtonText: {fileID: 859286793}
+  LoadText: {fileID: 632187080}
 --- !u!4 &464589545
 Transform:
   m_ObjectHideFlags: 0

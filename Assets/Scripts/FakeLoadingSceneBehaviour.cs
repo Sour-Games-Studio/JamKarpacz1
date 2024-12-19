@@ -13,7 +13,6 @@ public class FakeLoadingSceneBehaviour : MonoBehaviour
 
     private void Start()
     {
-        LoadText = LoadTextObject.GetComponent<TMP_Text>();
         Invoke("FinishLoading", 4f);
         noDots();
     }
