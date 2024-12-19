@@ -979,6 +979,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8558665266083035474, guid: 2179fcaa9f501c0458eef7c19c424c40,
         type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558665266083035474, guid: 2179fcaa9f501c0458eef7c19c424c40,
+        type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -1208,7 +1213,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1575249581}
   attackRate: 2
   bulletSpeed: 1000
-  bullet: {fileID: 2698920089649980045, guid: acb66c4ceabd0524b89a1fb99a16eb43, type: 3}
+  bullet: {fileID: 2698920089649980045, guid: 05f6ecc4f2f8f0344b8843b8dba56280, type: 3}
 --- !u!1 &2013922401
 GameObject:
   m_ObjectHideFlags: 0

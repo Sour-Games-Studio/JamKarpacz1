@@ -14,11 +14,15 @@ public class RangedAttack : MonoBehaviour
 
     [SerializeField] public float bulletSpeed = 10f;
 
+    public int ammoMax = 3;
+    public int ammoCurrent = 3;
+
     public GameObject bullet;
 
     public void TryAttack(float angle)
     {
-        if (Time.time >= nextAttackTime)
+        Debug.Log("ammoCurrent: " + ammoCurrent);
+        if (Time.time >= nextAttackTime && ammoCurrent!=0)
         {
             Attack(angle);
             nextAttackTime = Time.time + 1f / attackRate;
@@ -27,6 +31,7 @@ public class RangedAttack : MonoBehaviour
 
     void Attack(float attackDirection)
     {
+        ammoCurrent--;
         // Detect enemies in range of attack
         //Debug.Log(attackDirection + "attackDirection");
         Vector3 attackDirectionVector = new Vector3(Mathf.Cos(attackDirection * Mathf.Deg2Rad), 0, Mathf.Sin(attackDirection * Mathf.Deg2Rad));

@@ -8,13 +8,17 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject bullet2;
+    [SerializeField] private GameObject ogur;
     [SerializeField] private float attackSpeedTimer;
     [SerializeField] private float attackSpeed = 3f;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float damage;
     
     [SerializeField] private float hp = 3;
+
+    public int ammoStuck = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,9 +56,35 @@ public class EnemyAi : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hp -= damage;
-        //Debug.Log("Enemy took "+damage+" damage");
+        Debug.Log("Enemy took "+damage+" damage");
         if (hp<1)
         {
+            if (ammoStuck > 0)
+            {
+                //spawn ammoStuck amount of ammon on the ground
+                for (int i = 0; i < ammoStuck; i++)
+                {
+                    Instantiate(ogur, this.transform.position + new Vector3(0,2,0), Quaternion.identity);
+                }
+            }
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void TakeMeleeDamage(float damage)
+    {
+        hp -= damage;
+        Debug.Log("Enemy took "+damage+" damage");
+        if (hp<1)
+        {
+            if (ammoStuck > 0)
+            {
+                GetComponent<RangedAttack>().ammoCurrent += ammoStuck;
+            }
+            else if (player.GetComponent<RangedAttack>().ammoCurrent < player.GetComponent<RangedAttack>().ammoMax)
+            {
+                player.GetComponent<RangedAttack>().ammoCurrent++;
+            }
             Destroy(this.gameObject);
         }
     }

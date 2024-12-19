@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] public string owner = "Player";
     [SerializeField] public float damage = 1f;
+
+    public GameObject ogur;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -17,15 +19,24 @@ public class Bullet : MonoBehaviour
             other.GetComponent<PlayerMovement>().TakeDamagePlayer(damage);
             
         }
-        if (other.CompareTag("Enemy") && owner == "Player")
+        else if (other.CompareTag("Enemy") && owner == "Player")
         {
+            other.GetComponent<EnemyAi>().ammoStuck++;
             other.GetComponent<EnemyAi>().TakeDamage(damage);
+            
+        }
+        else if (owner == "Player" && other.CompareTag("Untagged"))
+        {
+            Instantiate(ogur, this.transform.position+ new Vector3(0,2,0), Quaternion.identity);
+            Destroy(this.gameObject);
         }
         if (other.tag == owner)
         {
             return;
         }
+
         Destroy(this.gameObject);
+        
        
     }
 }

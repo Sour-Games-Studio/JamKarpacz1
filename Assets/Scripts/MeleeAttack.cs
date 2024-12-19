@@ -11,6 +11,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
     [SerializeField] private  GameObject attackSpherePrefab;
+    [SerializeField] private GameObject player;
 
     public void TryAttack(float angle)
     {
@@ -30,17 +31,31 @@ public class MeleeAttack : MonoBehaviour
         Vector3 attackPosition = attackPoint.position + attackDirectionVector * attackRange;
         //Debug.Log(attackPosition + "attackPosition");
         //Detect enemies in range of the attack
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition, attackRange, enemyLayer);
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition, attackRange);
         //print whole collider 
-        // foreach (Collider enemy in hitEnemies)
-        // {
-        //     Debug.Log(enemy + "enemy" + enemy.tag);
-        // }
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log(enemy + "enemy" + enemy.tag);
+        }
         //Debug.Log(hitEnemies.Length + "hitEnemies");
         // Play an attack animation
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyAi>().TakeDamage(attackDamage);
+            //check layer
+            if (enemy.gameObject.layer == LayerMask.NameToLayer("Ogur"))
+            {
+                //give player ammo
+                player.GetComponent<RangedAttack>().ammoCurrent += 1;
+                
+            }
+            else if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemy") || enemy.gameObject.layer == LayerMask.NameToLayer("EnemyCollider"))
+            {
+                enemy.GetComponent<EnemyAi>().TakeMeleeDamage(attackDamage);
+            }
+            else
+            {
+                continue;
+            }
         }
 
         // Spawn a sphere at the attack point to visualize the attack
