@@ -51,8 +51,9 @@ public class MeleeAttack : MonoBehaviour
                 Destroy(enemy.gameObject);
                 
             }
-            else if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemy") || enemy.gameObject.layer == LayerMask.NameToLayer("EnemyCollider"))
+            else if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
+
                 enemy.GetComponent<EnemyAi>().TakeMeleeDamage(attackDamage);
             }
             else

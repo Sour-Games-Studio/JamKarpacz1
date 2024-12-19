@@ -149,15 +149,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad7a46daeaa0434db01d7ce4ffa2712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 549100564023295422}
   player: {fileID: 0}
   bullet: {fileID: 2698920089649980045, guid: acb66c4ceabd0524b89a1fb99a16eb43, type: 3}
-  bullet2: {fileID: 0}
+  ogur: {fileID: 2698920089649980045, guid: f49b2a5149504c84ca757c41d20bba26, type: 3}
   attackSpeedTimer: 0
   attackSpeed: 3
   bulletSpeed: 500
   damage: 0
   hp: 3
+  ammoStuck: 0
 --- !u!65 &9211471942780618589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -189,9 +190,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9042277391705131650}
   - component: {fileID: 8126643670750119167}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
