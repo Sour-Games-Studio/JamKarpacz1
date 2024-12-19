@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(transform.rotation);
             meleeAttack.TryAttack(ReturnAngle());
         }
-        if (Input.GetAxis("Fire2")>0)
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //Debug.Log(transform.rotation);
             rangedAttack.TryAttack(ReturnAngle());
