@@ -3300,7 +3300,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
+--- !u!114 &1575249582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575249573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5629f93517bd1429e6e993078114e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 2
+  attackDamage: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackPoint: {fileID: 1575249581}
+  attackRate: 2
+  bulletSpeed: 10
+  bullet: {fileID: 2698920089649980045, guid: acb66c4ceabd0524b89a1fb99a16eb43, type: 3}
 --- !u!1 &1678045995
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,21 +3754,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999115890}
   m_CullTransparentMesh: 1
-  m_GameObject: {fileID: 1575249573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5629f93517bd1429e6e993078114e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 2
-  attackDamage: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 192
-  attackPoint: {fileID: 1575249581}
-  attackRate: 2
-  bulletSpeed: 1000
-  bullet: {fileID: 2698920089649980045, guid: acb66c4ceabd0524b89a1fb99a16eb43, type: 3}
 --- !u!1 &2013922401
 GameObject:
   m_ObjectHideFlags: 0
