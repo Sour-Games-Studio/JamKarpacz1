@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : MonoBehaviour
+public class RangedAttack : MonoBehaviour
 {
+    // Start is called before the first frame update
     [SerializeField] private float attackRange = 2f;
-    public float attackDamage = 10f;
+    [SerializeField] public float attackDamage = 1f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
-    [SerializeField] private  GameObject attackSpherePrefab;
+
+    [SerializeField] public float bulletSpeed = 10f;
+
+    public GameObject bullet;
 
     public void TryAttack(float angle)
     {
@@ -29,27 +33,16 @@ public class MeleeAttack : MonoBehaviour
         //Debug.Log(attackDirectionVector + "attackDirectionVector");
         Vector3 attackPosition = attackPoint.position + attackDirectionVector * attackRange;
         //Debug.Log(attackPosition + "attackPosition");
-        //Detect enemies in range of the attack
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition, attackRange, enemyLayer);
-        //print whole collider 
-        // foreach (Collider enemy in hitEnemies)
-        // {
-        //     Debug.Log(enemy + "enemy" + enemy.tag);
-        // }
-        //Debug.Log(hitEnemies.Length + "hitEnemies");
-        // Play an attack animation
-        foreach (Collider enemy in hitEnemies)
-        {
-            enemy.GetComponent<EnemyAi>().TakeDamage(attackDamage);
-        }
+        //spawn bullet in direction of attack
+        var currentBullet = Instantiate(bullet, attackPosition, Quaternion.identity);
+        currentBullet.GetComponent<Bullet>().owner = "Player";
+        currentBullet.GetComponent<Bullet>().damage = attackDamage;
+
+        currentBullet.GetComponent<Rigidbody>().AddForce(attackDirectionVector * bulletSpeed);
 
         // Spawn a sphere at the attack point to visualize the attack
-        Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
+        //Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
     }
 
-    void OnDrawGizmosSelected()
-    {
-        // Draw the attack range
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
+    // Update is called once per frame
 }
