@@ -38,9 +38,12 @@ public class EnemyAi : MonoBehaviour
            currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
             attackSpeedTimer = attackSpeed;          
         }
-        Debug.Log(attackSpeedTimer.ToString());
+        //Debug.Log(attackSpeedTimer.ToString());
     }
 
-    
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("Enemy took "+damage+" damage");
+    }
    
 }

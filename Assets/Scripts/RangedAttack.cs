@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeAttack : MonoBehaviour
+public class RangedAttack : MonoBehaviour
 {
+    // Start is called before the first frame update
     [SerializeField] private float attackRange = 2f;
-    public float attackDamage = 10f;
+    [SerializeField] private float attackDamage = 10f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
-    [SerializeField] private  GameObject attackSpherePrefab;
+
+    [SerializeField] public float bulletSpeed = 10f;
+
+    public GameObject bullet;
 
     public void TryAttack(float angle)
     {
@@ -29,23 +33,13 @@ public class MeleeAttack : MonoBehaviour
         Debug.Log(attackDirectionVector + "attackDirectionVector");
         Vector3 attackPosition = attackPoint.position + attackDirectionVector * attackRange;
         Debug.Log(attackPosition + "attackPosition");
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPosition + new Vector3(1.0f,0,0), attackRange, enemyLayer);
-
-        // Play an attack animation
-        foreach (Collider enemy in hitEnemies)
-        {
-            enemy.GetComponent<EnemyAi>().TakeDamage(attackDamage);
-        }
+        //spawn bullet in direction of attack
+        var currentBullet = Instantiate(bullet, attackPosition, Quaternion.identity);
+        currentBullet.GetComponent<Rigidbody>().AddForce(attackDirectionVector * bulletSpeed);
 
         // Spawn a sphere at the attack point to visualize the attack
-        Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
+        //Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-
-        Gizmos.DrawWireSphere(attackPoint.position + new Vector3(1.0f, 0, 0), attackRange);
-    }
+    // Update is called once per frame
 }

@@ -6,13 +6,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private Rigidbody rb;
     private MeleeAttack meleeAttack;
+
+    private RangedAttack rangedAttack;
     private float dashDistance = 5f;
     public Transform Center;
+
+    public float health = 6;
+    private float dmgTimer = 1f;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         meleeAttack = GetComponent<MeleeAttack>();
+        rangedAttack = GetComponent<RangedAttack>();
     }
 
     void Update()
@@ -20,13 +27,20 @@ public class PlayerMovement : MonoBehaviour
         ProcessInputs();
 
 
-        print(Input.GetAxis("Fire1"));
+        //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)
         {
-            Debug.Log(transform.rotation);
+            //Debug.Log(transform.rotation);
             meleeAttack.TryAttack(ReturnAngle());
         }
+        if (Input.GetAxis("Fire2")>0)
+        {
+            //Debug.Log(transform.rotation);
+            rangedAttack.TryAttack(ReturnAngle());
+        }
+
+        Debug.Log(health);
 
     }
 
@@ -99,5 +113,38 @@ private float RemapLeftSideAngles(float angle)
         return Mathf.Lerp(90f, 180f, (angle - 90f) / 90f);
     }
     return angle;
+}
+
+private void OnTriggerStay(Collider other)
+ {
+     if (CompareTag("Enemy"))
+     {
+         if (dmgTimer > 0)
+         {
+             dmgTimer -= Time.deltaTime;
+         }
+         else if (dmgTimer <= 0)
+         {
+             health -= 1;
+         }
+     }
+ } 
+ 
+// private void OnTriggerEnter(Collider other)
+// {
+//     Debug.Log("Got damaged");
+//     if (CompareTag("Bullet"))
+//     {
+//         health -= 1;
+//     }
+//     Debug.Log(health + "health after triggerenter");
+// }
+
+public void TakeDamagePlayer(float damage)
+{
+    
+    health -= damage;
+    Debug.Log("Player took " + damage + " damage");
+    Debug.Log(health + "health after takedamage");
 }
 }
