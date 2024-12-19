@@ -1087,6 +1087,30 @@ MonoBehaviour:
   text2: {fileID: 706653074}
   text3: {fileID: 135439123}
   inputField: {fileID: 1376079785}
+  words:
+  - Maczuga
+  - Miecz
+  - Scyzoryk
+  - Nunczak
+  - Naostrzona kredka
+  - Ostrze
+  - Chwytak
+  - Nitro
+  - Silnik
+  - Paliwo
+  - Wiatrak
+  - Opona
+  - Czerwona kredka
+  - Bateria
+  - Akumulator
+  - Olej
+  - Wtyczka
+  - Trybik
+  - Zestaw naprawczy
+  - Smar
+  - Zielona kredka
+  - Antena
+  - Klon Trurla
 --- !u!1 &319551466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,6 +3173,7 @@ MonoBehaviour:
   attackRate: 2
   attackSpherePrefab: {fileID: 3896945323966752350, guid: 34596674a7dbf2249b042f3bad5a03ce,
     type: 3}
+  player: {fileID: 0}
 --- !u!143 &1575249575
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3325,6 +3350,8 @@ MonoBehaviour:
   attackPoint: {fileID: 1575249581}
   attackRate: 2
   bulletSpeed: 10
+  ammoMax: 3
+  ammoCurrent: 3
   bullet: {fileID: 2698920089649980045, guid: acb66c4ceabd0524b89a1fb99a16eb43, type: 3}
 --- !u!1 &1678045995
 GameObject:
