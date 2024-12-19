@@ -62,6 +62,7 @@ public class Items : MonoBehaviour
         //inicjacja maszyny
         if(UnityEngine.Input.GetKeyDown(KeyCode.I))
         {
+            player.canMove = false;
             inputField.gameObject.SetActive(true);
         }
     }
@@ -161,6 +162,7 @@ public class Items : MonoBehaviour
 
         inputField.text = "";
         inputField.gameObject.SetActive(false);
+        player.canMove = true;
     }
     public void Button2()
     {
@@ -188,6 +190,7 @@ public class Items : MonoBehaviour
 
         inputField.text = "";
         inputField.gameObject.SetActive(false);
+        player.canMove = true;
     }
     public void Button3()
     {
@@ -215,5 +218,6 @@ public class Items : MonoBehaviour
 
         inputField.text = "";
         inputField.gameObject.SetActive(false);
+        player.canMove = true;
     }
 }

@@ -1087,6 +1087,7 @@ MonoBehaviour:
   text2: {fileID: 706653074}
   text3: {fileID: 135439123}
   inputField: {fileID: 1376079785}
+  player: {fileID: 7429858723165440325}
   words:
   - Maczuga
   - Miecz
@@ -1100,7 +1101,6 @@ MonoBehaviour:
   - Paliwo
   - Wiatrak
   - Opona
-  - Spoiler
   - Czerwona kredka
   - Bateria
   - Akumulator
@@ -3887,6 +3887,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 284dc9bdf0676e14aa42e752c127aa3f, type: 3}
+--- !u!114 &7429858723165440325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7351050669677007609, guid: 284dc9bdf0676e14aa42e752c127aa3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7429858723165440324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575249573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9dc4b491bddc44ba789b9cf5b1350e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
