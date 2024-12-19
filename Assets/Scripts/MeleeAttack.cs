@@ -35,17 +35,20 @@ public class MeleeAttack : MonoBehaviour
         //print whole collider 
         foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log(enemy + "enemy" + enemy.tag);
+            Debug.Log(enemy + " tag " + enemy.tag);
         }
         //Debug.Log(hitEnemies.Length + "hitEnemies");
         // Play an attack animation
         foreach (Collider enemy in hitEnemies)
         {
+            //Debug.Log(enemy.gameObject.layer + "enemyLayer");
             //check layer
             if (enemy.gameObject.layer == LayerMask.NameToLayer("Ogur"))
             {
+                Debug.Log("Znaleziono ogura");
                 //give player ammo
                 player.GetComponent<RangedAttack>().ammoCurrent += 1;
+                Destroy(enemy.gameObject);
                 
             }
             else if (enemy.gameObject.layer == LayerMask.NameToLayer("Enemy") || enemy.gameObject.layer == LayerMask.NameToLayer("EnemyCollider"))
@@ -59,7 +62,7 @@ public class MeleeAttack : MonoBehaviour
         }
 
         // Spawn a sphere at the attack point to visualize the attack
-        Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
+        //Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
     }
 
     void OnDrawGizmosSelected()
