@@ -40,13 +40,7 @@ public class EnemyAi : MonoBehaviour
         }
         Debug.Log(attackSpeedTimer.ToString());
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            //obrazenia dla gracza
-            Debug.Log("-10hp");
-        }
-    }
 
+    
+   
 }
