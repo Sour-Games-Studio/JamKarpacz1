@@ -14,6 +14,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float damage;
     
+    [SerializeField] private float hp = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,16 +35,28 @@ public class EnemyAi : MonoBehaviour
         {
             //strzal
             var currentBullet = Instantiate(bullet);
+            currentBullet.GetComponent<Bullet>().owner = "Enemy";
             currentBullet.transform.position = this.transform.position;
            currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+           
             attackSpeedTimer = attackSpeed;          
+        }
+        //checking if collides with player
+        if (Vector3.Distance(player.transform.position, this.transform.position) < 2)
+        {
+            player.GetComponent<PlayerMovement>().TakeDamagePlayer(1);
         }
         //Debug.Log(attackSpeedTimer.ToString());
     }
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Enemy took "+damage+" damage");
+        hp -= damage;
+        //Debug.Log("Enemy took "+damage+" damage");
+        if (hp<1)
+        {
+            Destroy(this.gameObject);
+        }
     }
    
 }

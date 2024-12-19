@@ -6,7 +6,7 @@ public class RangedAttack : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float attackRange = 2f;
-    [SerializeField] private float attackDamage = 10f;
+    [SerializeField] public float attackDamage = 1f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRate = 2f;
@@ -28,13 +28,16 @@ public class RangedAttack : MonoBehaviour
     void Attack(float attackDirection)
     {
         // Detect enemies in range of attack
-        Debug.Log(attackDirection + "attackDirection");
+        //Debug.Log(attackDirection + "attackDirection");
         Vector3 attackDirectionVector = new Vector3(Mathf.Cos(attackDirection * Mathf.Deg2Rad), 0, Mathf.Sin(attackDirection * Mathf.Deg2Rad));
-        Debug.Log(attackDirectionVector + "attackDirectionVector");
+        //Debug.Log(attackDirectionVector + "attackDirectionVector");
         Vector3 attackPosition = attackPoint.position + attackDirectionVector * attackRange;
-        Debug.Log(attackPosition + "attackPosition");
+        //Debug.Log(attackPosition + "attackPosition");
         //spawn bullet in direction of attack
         var currentBullet = Instantiate(bullet, attackPosition, Quaternion.identity);
+        currentBullet.GetComponent<Bullet>().owner = "Player";
+        currentBullet.GetComponent<Bullet>().damage = attackDamage;
+
         currentBullet.GetComponent<Rigidbody>().AddForce(attackDirectionVector * bulletSpeed);
 
         // Spawn a sphere at the attack point to visualize the attack
