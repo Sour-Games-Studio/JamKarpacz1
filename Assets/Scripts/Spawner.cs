@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,11 +9,12 @@ public class Spawner : MonoBehaviour
     [SerializeField]  private GameObject enemy;
     [SerializeField] private int amountSpawned;
 
-    [SerializeField] private Vector3 [] spawnLocations;
+    [SerializeField] private Transform [] spawnLocations;
 
 
 
     // Update is called once per frame
+
     void Start()
     {
         //wait 5s before spawning anything
@@ -21,8 +23,10 @@ public class Spawner : MonoBehaviour
     }
     void spawnEnemy()
     {
+        amountSpawned = spawnLocations.Length;
         for (int i = 0; i < amountSpawned; i++)
         {
+
             Instantiate(enemy, RandomLocation(), Quaternion.identity);
 
         }
