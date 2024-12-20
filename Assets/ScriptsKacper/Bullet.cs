@@ -13,7 +13,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //print tag it entered
-        //Debug.Log(other.tag+ "Entered tag");
+        if(owner == "Player"){       
+            Debug.Log(other.tag+ "Entered tag" + other.name);
+        }
         if (other.CompareTag("Player")&& owner == "Enemy")
         {
             other.GetComponent<PlayerMovement>().TakeDamagePlayer(damage);
@@ -27,9 +29,14 @@ public class Bullet : MonoBehaviour
         }
         else if (owner == "Player" && other.CompareTag("Untagged"))
         {
-            Instantiate(ogur, this.transform.position+ new Vector3(0,2,0), Quaternion.identity);
+            Instantiate(ogur, this.transform.position+ new Vector3(0,0.2f,0), Quaternion.identity);
             Destroy(this.gameObject);
         }
+        else if (other.CompareTag("lvl1"))
+        {
+            return;
+        }
+
         if (other.tag == owner)
         {
             return;

@@ -88,7 +88,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &7351050669677007609
 MonoBehaviour:
@@ -104,10 +104,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   Center: {fileID: 6062213705315888087}
+  isWaveEnd: 1
+  killCount: 0
   health: 6
   canMove: 1
   Direction: 0
   animator: {fileID: 5239327466912776885}
+  Hearts: []
+  DamageText: {fileID: 0}
+  SpeedText: {fileID: 0}
 --- !u!143 &3945647277293041085
 CharacterController:
   m_ObjectHideFlags: 0
@@ -168,17 +173,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c5629f93517bd1429e6e993078114e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 2
+  attackRange: 0.1
   attackDamage: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   attackPoint: {fileID: 6062213705315888087}
   attackRate: 2
-  bulletSpeed: 1000
+  bulletSpeed: 100
   ammoMax: 3
   ammoCurrent: 3
   bullet: {fileID: 2698920089649980045, guid: 05f6ecc4f2f8f0344b8843b8dba56280, type: 3}
+  AmmoText: {fileID: 0}
 --- !u!212 &709591203409503668
 SpriteRenderer:
   m_ObjectHideFlags: 0
