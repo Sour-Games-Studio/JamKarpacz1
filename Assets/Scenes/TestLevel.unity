@@ -2170,7 +2170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: {fileID: 296415653}
-  spawner: {fileID: 0}
 --- !u!1 &867094304
 GameObject:
   m_ObjectHideFlags: 0

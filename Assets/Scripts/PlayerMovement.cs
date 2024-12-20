@@ -13,9 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private RangedAttack rangedAttack;
     private float dashDistance = 5f;
     public Transform Center;
-    public int killCount = 0;
+
     public bool isWaveEnd = false;
-    [SerializeField] public static int level = 1;
+
     public float health = 6;
     private float maxHealth;
     private bool isInvincible = false;
@@ -53,16 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
         ProcessInputs();
         
-        if(killCount >= GameObject.FindGameObjectsWithTag("Enemy").Length)
-        {
-            isWaveEnd = true;
-            level++;
-        }
-        else if(killCount < GameObject.FindGameObjectsWithTag("Enemy").Length)
-        {
-            isWaveEnd= false;
-        }
-
+        
         //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)
