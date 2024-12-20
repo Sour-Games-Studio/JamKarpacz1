@@ -261,6 +261,7 @@ public void TakeDamagePlayer(float damage)
     }
     if (health < 1)
     {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Destroy(this.gameObject);
         //play game over screen
     }
