@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 549100564023295422}
-  player: {fileID: 0}
+  player: {fileID: 5389396705390233949, guid: 284dc9bdf0676e14aa42e752c127aa3f, type: 3}
   bullet: {fileID: 2698920089649980045, guid: acb66c4ceabd0524b89a1fb99a16eb43, type: 3}
   ogur: {fileID: 2698920089649980045, guid: f49b2a5149504c84ca757c41d20bba26, type: 3}
   attackSpeedTimer: 0

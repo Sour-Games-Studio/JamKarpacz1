@@ -71,6 +71,7 @@ public class EnemyAi : MonoBehaviour
                 }
             }
             Debug.Log("Enemy died");
+            player.GetComponent<PlayerMovement>().killCount++;
             Destroy(this.gameObject);
         }
     }
