@@ -13,7 +13,10 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float attackSpeed = 3f;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float damage;
-    
+
+    [SerializeField] private AudioSource AS;
+    [SerializeField] private AudioSource ASS;
+
     [SerializeField] private float hp = 3;
 
     public int ammoStuck = 0;
@@ -25,7 +28,7 @@ public class EnemyAi : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
         attackSpeedTimer = attackSpeed;
-        
+        ASS = GameObject.Find("EnemyDeathSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class EnemyAi : MonoBehaviour
         else if (attackSpeedTimer <= 0)
         {
             //strzal
+            AS.Play();
             var currentBullet = Instantiate(bullet);
             currentBullet.GetComponent<Bullet>().owner = "Enemy";
             currentBullet.transform.position = this.transform.position;
@@ -63,6 +67,8 @@ public class EnemyAi : MonoBehaviour
         Debug.Log("Enemy hp: "+hp);
         if (hp<1)
         {
+            print("PlaySound");
+            ASS.Play();
             if (ammoStuck > 0)
             {
                 //spawn ammoStuck amount of ammon on the ground
@@ -83,6 +89,7 @@ public class EnemyAi : MonoBehaviour
         Debug.Log("Enemy took "+damage+" damage");
         if (hp<1)
         {
+            ASS.Play();
             if (ammoStuck > 0)
             {
                 player.GetComponent<RangedAttack>().ammoCurrent += ammoStuck;
