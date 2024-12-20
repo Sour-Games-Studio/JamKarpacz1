@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private MeleeAttack meleeAttack;
 
     private RangedAttack rangedAttack;
-    private float dashDistance = 5f;
+    private float dashDistance = 10f;
     public Transform Center;
 
     public bool isWaveEnd = false;
