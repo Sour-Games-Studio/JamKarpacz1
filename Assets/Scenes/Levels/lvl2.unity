@@ -185,6 +185,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fcec9b1dffcf7ff47a73f90c81ef2184,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -371,6 +376,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PC2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4a22f7fbf88a3304c811f127964de1ee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -458,6 +468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pipe4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7420dde95dbc4134397f5af2c85f6d84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -595,6 +610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrelLP (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 693462f79b33de241b8d7679db19c325,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -682,6 +702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pipe4 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7420dde95dbc4134397f5af2c85f6d84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -819,6 +844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 60f74506e3b29ac4a869d0063d669014,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -887,6 +917,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Multi_Shelf
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: da89c3d3b2b575741a69af1cd487577c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -954,6 +989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BarrelLP
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 693462f79b33de241b8d7679db19c325,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1043,6 +1083,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7420dde95dbc4134397f5af2c85f6d84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1110,6 +1155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Electrc_Box_3cable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f3a29324331b0454cbc3b28cec543aa6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1199,6 +1249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe4 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7420dde95dbc4134397f5af2c85f6d84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1266,6 +1321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slot_machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 997f0792cfb667b4f9608fd7ca714e52,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1335,6 +1395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shelf
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c09debb7a40d29a489c716ef338354ef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1402,6 +1467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CloseShelfLP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 32bea22df2bfe9844893d72b8efcb186,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1491,6 +1561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4c7a85960ac55944b15d0ff579a1d07,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1579,6 +1654,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76860f2788dec6f42b989d418627e370,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1646,6 +1726,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BarrelLP (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 693462f79b33de241b8d7679db19c325,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1715,6 +1800,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84cf8f1cd32ca0f489cb9032f6efe857,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1782,6 +1872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Multi_Shelf (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: da89c3d3b2b575741a69af1cd487577c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1851,6 +1946,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseShelfLP
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 94f311fde774a964696d9d2b53124bec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1918,6 +2018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bdd19b11475c36b4ba075f3053b922d9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2055,6 +2160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloseShelfLP (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 94f311fde774a964696d9d2b53124bec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2122,6 +2232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PC2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4a22f7fbf88a3304c811f127964de1ee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2283,6 +2398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PC2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4a22f7fbf88a3304c811f127964de1ee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2350,6 +2470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pc_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8d36712438091f5498d12460beb7e633,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
