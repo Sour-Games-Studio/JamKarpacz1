@@ -14,12 +14,26 @@ public class Spawner : MonoBehaviour
 
 
     // Update is called once per frame
-    public void spawnEnemy()
+
+    void Start()
+    {
+        //wait 5s before spawning anything
+        Invoke("spawnEnemy", 5f);
+        
+    }
+    void spawnEnemy()
     {
         amountSpawned = spawnLocations.Length;
         for (int i = 0; i < amountSpawned; i++)
         {
-            Instantiate(enemy, spawnLocations[i].position, Quaternion.identity);
+
+            Instantiate(enemy, RandomLocation(), Quaternion.identity);
+
         }
+    }
+
+    Vector3 RandomLocation()
+    {
+        return spawnLocations[Random.Range(0, spawnLocations.Length)];
     }
 }
