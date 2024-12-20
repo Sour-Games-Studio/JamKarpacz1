@@ -30,6 +30,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private List<GameObject> Hearts;
     [SerializeField] private TMP_Text DamageText;
     [SerializeField] private TMP_Text SpeedText;
+
+
+    [SerializeField] private List<AudioSource> ASSes;
+    //0 - Dash
+    //1 - Take Damage
+    //2 - Attack
+    //3 - Shoot ogor
+    //4 - Walking
     private void Awake()
     {
         meleeAttack = GetComponent<MeleeAttack>();
@@ -79,6 +87,10 @@ public class PlayerMovement : MonoBehaviour
             meleeAttack.TryAttack(ReturnAngle());
             animator.SetBool("IsMeleeing", true);
             print(animator.GetBool("IsMeleeing"));
+            if (!ASSes[2].isPlaying)
+            {
+                ASSes[2].Play();
+            }
             StartCoroutine(ResetBools());
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -86,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(transform.rotation);
             rangedAttack.TryAttack(ReturnAngle());
             animator.SetBool("IsRanging", true);
+            ASSes[3].Play();
             print(animator.GetBool("IsRanging"));
             StartCoroutine(ResetBools());
         }
@@ -150,9 +163,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputs = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection = new Vector3(inputs.x, 0, inputs.z);
+        if (!ASSes[4].isPlaying)
+        {
+            ASSes[4].Play();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
+            ASSes[0].Play();
             Dash(moveDirection);
             StartCoroutine(DashCooldown());
             StartCoroutine(InvincibilityFrames(1.5f));
@@ -235,6 +253,7 @@ public void TakeDamagePlayer(float damage)
 {
     if(!isInvincible){
         health -= damage;
+            ASSes[1].Play();
             VisuallyUpdateHealth();
         //Debug.Log("Player took " + damage + " damage");
         //Debug.Log(health + "health after takedamage");
