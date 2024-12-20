@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 3945647277293041085}
   - component: {fileID: 8333813958134450740}
   - component: {fileID: 5636402541847062104}
-  - component: {fileID: 123134651434806}
-  - component: {fileID: 8824730141741603817}
+  - component: {fileID: 709591203409503668}
+  - component: {fileID: 5789041688725466710}
+  - component: {fileID: 5239327466912776885}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -105,7 +106,8 @@ MonoBehaviour:
   Center: {fileID: 6062213705315888087}
   health: 6
   canMove: 1
-  direction: 0
+  Direction: 0
+  animator: {fileID: 5239327466912776885}
 --- !u!143 &3945647277293041085
 CharacterController:
   m_ObjectHideFlags: 0
@@ -177,7 +179,7 @@ MonoBehaviour:
   ammoMax: 3
   ammoCurrent: 3
   bullet: {fileID: 2698920089649980045, guid: 05f6ecc4f2f8f0344b8843b8dba56280, type: 3}
---- !u!212 &123134651434806
+--- !u!212 &709591203409503668
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +231,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!331 &8824730141741603817
+--- !u!331 &5789041688725466710
 SpriteMask:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,3 +282,24 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5239327466912776885
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389396705390233949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78455aff53926c44e8ac978962361940, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

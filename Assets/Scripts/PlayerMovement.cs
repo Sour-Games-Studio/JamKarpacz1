@@ -67,11 +67,17 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log(transform.rotation);
             meleeAttack.TryAttack(ReturnAngle());
+            animator.SetBool("IsMeleeing", true);
+            print(animator.GetBool("IsMeleeing"));
+            StartCoroutine(ResetBools());
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //Debug.Log(transform.rotation);
             rangedAttack.TryAttack(ReturnAngle());
+            animator.SetBool("IsRanging", true);
+            print(animator.GetBool("IsRanging"));
+            StartCoroutine(ResetBools());
         }
 
         RotateSprite();
@@ -112,6 +118,16 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+        private IEnumerator ResetBools()
+    {
+        //Debug.Log("Player is invincible");
+        animator.SetBool("IsRanging",false);
+        yield return new WaitForSeconds(1f); // 1 second of invincibility
+        animator.SetBool("IsMeleeing",false);
+        //Debug.Log("Player is no longer invincible");
+    }
+
+    
 
     void Dash(Vector3 moveDirection)
     {
