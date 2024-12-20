@@ -12,16 +12,25 @@ public class Items : MonoBehaviour
     [SerializeField] private GameObject button1;
     [SerializeField] private GameObject button2;
     [SerializeField] private GameObject button3;
+    [SerializeField] private GameObject machineUI;
     [SerializeField] private TMP_Text text1;
     [SerializeField] private TMP_Text text2;
     [SerializeField] private TMP_Text text3;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private PlayerMovement player;
-    
+
+    [SerializeField] private GameObject speedUI;
+    [SerializeField] private GameObject healthUI;
+    [SerializeField] private GameObject damageUI;
+    [SerializeField] private GameObject badUI;
+    [SerializeField] private List<AudioSource> Asses;
+
+
     // Start is called before the first frame update
     void Start()
     {
         inputField.gameObject.SetActive(false);
+        machineUI.SetActive(false);
         button1.SetActive(false);
         button2.SetActive(false);
         button3.SetActive(false);
@@ -70,11 +79,13 @@ public class Items : MonoBehaviour
         {
             player.canMove = false;
             inputField.gameObject.SetActive(true);
+            machineUI.SetActive(true);
         }
         else if(!onOff)
         {
             player.canMove = true;
             inputField.gameObject.SetActive(false);
+            machineUI.SetActive(false);
         }
     }
     public void WishMachine()
@@ -153,30 +164,35 @@ public class Items : MonoBehaviour
             PlayerPrefs.SetFloat("meleeAttackDamage", player.GetComponent<MeleeAttack>().attackDamage);
             PlayerPrefs.SetFloat("rangedAttackDamage", player.GetComponent<RangedAttack>().attackDamage);
             Debug.LogWarning("guzik dziala");
+            damageUI.SetActive(true);
             words.Remove(text1.text);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if(text1.text == "Nitro" || text1.text == "Silnik" || text1.text == "Paliwo" || text1.text == "Wiatrak" || text1.text == "Opona"|| text1.text == "Czerwona kredka" || text1.text == "Bateria" || text1.text == "Akumulator")
         {
             player.moveSpeed++;
+            speedUI.SetActive(true);
             PlayerPrefs.SetFloat("moveSpeed", player.moveSpeed);
             words.Remove(text1.text);
         }
         else if (text1.text == "Olej" || text1.text == "Wtyczka" || text1.text == "Trybik" || text1.text == "Zestaw Naprawczy" || text1.text == "Smar" || text1.text == "Zielona kredka" || text1.text == "Antena" || text1.text == "Klon Trurla")
         {
             player.health++;
+            healthUI.SetActive(true);
             PlayerPrefs.SetFloat("health", player.health);
             words.Remove(text1.text);
         }
         else if (text1.text == "Bomba" || text1.text == "Mina" || text1.text == "Granat" || text1.text == "Woda" || text1.text == "Piasek" || text1.text == "Rdza")
         {
             player.health--;
+            badUI.SetActive(true);
             PlayerPrefs.SetFloat("health", player.health);
             words.Remove(text1.text);
         }
 
         inputField.text = "";
         WishMachineOnOff(false);
+        Invoke("LoadNextLevel", 3f);
+        Asses[0].Play();
     }
     public void Button2()
     {
@@ -186,30 +202,35 @@ public class Items : MonoBehaviour
             player.GetComponent<RangedAttack>().attackDamage++;
             PlayerPrefs.SetFloat("meleeAttackDamage", player.GetComponent<MeleeAttack>().attackDamage);
             PlayerPrefs.SetFloat("rangedAttackDamage", player.GetComponent<RangedAttack>().attackDamage);
+            damageUI.SetActive(true);
             words.Remove(text2.text);
         }
         else if (text2.text == "Nitro" || text2.text == "Silnik" || text2.text == "Paliwo" || text2.text == "Wiatrak" || text2.text == "Opona"|| text2.text == "Czerwona kredka" || text2.text == "Bateria" || text2.text == "Akumulator")
         {
             player.moveSpeed++;
+            speedUI.SetActive(true);
             PlayerPrefs.SetFloat("moveSpeed", player.moveSpeed);
             words.Remove(text2.text);
         }
         else if (text2.text == "Olej" || text2.text == "Wtyczka" || text2.text == "Trybik" || text2.text == "Zestaw Naprawczy" || text2.text == "Smar" || text2.text == "Zielona kredka" || text2.text == "Antena" || text2.text == "Klon Trurla")
         {
             player.health++;
+            healthUI.SetActive(true);
             PlayerPrefs.SetFloat("health", player.health);
             words.Remove(text2.text);
         }
         else if (text2.text == "Bomba" || text2.text == "Mina" || text2.text == "Granat" || text2.text == "Woda" || text2.text == "Piasek" || text2.text == "Rdza")
         {
             player.health--;
+            badUI.SetActive(true);
             PlayerPrefs.SetFloat("health", player.health);
             words.Remove(text2.text);
         }
 
         inputField.text = "";
         WishMachineOnOff(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Invoke("LoadNextLevel", 3f);
+        Asses[1].Play();
     }
     public void Button3()
     {
@@ -219,29 +240,39 @@ public class Items : MonoBehaviour
             player.GetComponent<RangedAttack>().attackDamage++;
             PlayerPrefs.SetFloat("meleeAttackDamage", player.GetComponent<MeleeAttack>().attackDamage);
             PlayerPrefs.SetFloat("rangedAttackDamage", player.GetComponent<RangedAttack>().attackDamage);
+            damageUI.SetActive(true);
             words.Remove(text3.text);
         }
         else if (text3.text == "Nitro" || text3.text == "Silnik" || text3.text == "Paliwo" || text3.text == "Wiatrak" || text3.text == "Opona"|| text3.text == "Czerwona kredka" || text3.text == "Bateria" || text3.text == "Akumulator")
         {
             player.moveSpeed++;
+            speedUI.SetActive(true);
             PlayerPrefs.SetFloat("moveSpeed", player.moveSpeed);
             words.Remove(text3.text);
         }
         else if (text3.text == "Olej" || text3.text == "Wtyczka" || text3.text == "Trybik" || text3.text == "Zestaw Naprawczy" || text3.text == "Smar" || text3.text == "Zielona kredka" || text3.text == "Antena" || text3.text == "Klon Trurla")
         {
             player.health++;
+            healthUI.SetActive(true);
             PlayerPrefs.SetFloat("health", player.health);
             words.Remove(text3.text);
         }
         else if (text3.text == "Bomba" || text3.text == "Mina" || text3.text == "Granat" || text3.text == "Woda" || text3.text == "Piasek" || text3.text == "Rdza")
         {
             player.health--;
+            badUI.SetActive(true);
             PlayerPrefs.SetFloat("health", player.health);
             words.Remove(text3.text);
         }
 
         inputField.text = "";
         WishMachineOnOff(false);
+        Invoke("LoadNextLevel", 3f);
+        Asses[2].Play();
+    }
+
+    private void LoadNextLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
