@@ -24,6 +24,7 @@ public class Items : MonoBehaviour
     [SerializeField] private GameObject damageUI;
     [SerializeField] private GameObject badUI;
     [SerializeField] private List<AudioSource> Asses;
+    [SerializeField] private AudioSource Ass;
 
 
     // Start is called before the first frame update
@@ -70,6 +71,14 @@ public class Items : MonoBehaviour
     {
         WishMachine();
 
+        if (!player.canMove)
+        {
+            if (UnityEngine.Input.anyKeyDown && !(UnityEngine.Input.GetMouseButtonDown(0)
+                || UnityEngine.Input.GetMouseButtonDown(1) || UnityEngine.Input.GetMouseButtonDown(2)))
+            {
+                Ass.Play();
+            }
+        }
         //inicjacja maszyny
 
     }
