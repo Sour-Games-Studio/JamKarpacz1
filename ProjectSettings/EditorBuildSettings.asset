@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FakeLoadingScene.unity
     guid: 2464b027d9e4fca46af5e24879e0339f
+  - enabled: 1
+    path: Assets/Scenes/Kacper2.unity
+    guid: 5de289b1a9955644aad78fe87f560cd2
   m_configObjects: {}
