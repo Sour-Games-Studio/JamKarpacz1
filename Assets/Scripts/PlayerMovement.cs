@@ -27,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
     {
         meleeAttack = GetComponent<MeleeAttack>();
         rangedAttack = GetComponent<RangedAttack>();
-        moveSpeed = PlayerPrefs.GetFloat("moveSpeed");
-        health = PlayerPrefs.GetFloat("health");
-        rangedAttack.attackDamage = PlayerPrefs.GetFloat("rangedAttackDamage");
-        meleeAttack.attackDamage = PlayerPrefs.GetFloat("meleeAttackDamage");
+        moveSpeed = PlayerPrefs.HasKey("moveSpeed") ? PlayerPrefs.GetFloat("moveSpeed") : 4f;
+        health = PlayerPrefs.HasKey("health") ? PlayerPrefs.GetFloat("health") : 6f;
+        rangedAttack.attackDamage = PlayerPrefs.HasKey("rangedAttackDamage") ? PlayerPrefs.GetFloat("rangedAttackDamage") : 1f;
+        meleeAttack.attackDamage = PlayerPrefs.HasKey("meleeAttackDamage") ? PlayerPrefs.GetFloat("meleeAttackDamage") : 2f;
     }
     void Start()
     {

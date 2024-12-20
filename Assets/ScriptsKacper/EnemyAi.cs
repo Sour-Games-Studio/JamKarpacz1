@@ -23,6 +23,7 @@ public class EnemyAi : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player");
         attackSpeedTimer = attackSpeed;
         
     }
@@ -47,7 +48,7 @@ public class EnemyAi : MonoBehaviour
         }
 
         //checking if collides with player
-        if (Vector3.Distance(player.transform.position, this.transform.position) < 2)
+        if (Vector3.Distance(player.transform.position, this.transform.position) < 1.5f)
         {
             player.GetComponent<PlayerMovement>().TakeDamagePlayer(1);
         }
