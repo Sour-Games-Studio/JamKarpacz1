@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RangedAttack : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class RangedAttack : MonoBehaviour
 
     public GameObject bullet;
 
+    [SerializeField] private TMP_Text AmmoText;
+
+    private void Start()
+    {
+        UpdateAmmoText();
+    }
+
     public void TryAttack(float angle)
     {
         Debug.Log("ammoCurrent: " + ammoCurrent);
@@ -32,6 +40,7 @@ public class RangedAttack : MonoBehaviour
     void Attack(float attackDirection)
     {
         ammoCurrent--;
+        UpdateAmmoText();
         // Detect enemies in range of attack
         //Debug.Log(attackDirection + "attackDirection");
         Vector3 attackDirectionVector = new Vector3(Mathf.Cos(attackDirection * Mathf.Deg2Rad), 0, Mathf.Sin(attackDirection * Mathf.Deg2Rad));
@@ -47,6 +56,11 @@ public class RangedAttack : MonoBehaviour
 
         // Spawn a sphere at the attack point to visualize the attack
         //Instantiate(attackSpherePrefab, attackPosition, Quaternion.identity);
+    }
+
+    public void UpdateAmmoText()
+    {
+        AmmoText.text = "X " + ammoCurrent;
     }
 
     // Update is called once per frame

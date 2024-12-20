@@ -48,6 +48,7 @@ public class MeleeAttack : MonoBehaviour
                 Debug.Log("Znaleziono ogura");
                 //give player ammo
                 player.GetComponent<RangedAttack>().ammoCurrent += 1;
+                player.GetComponent<RangedAttack>().UpdateAmmoText();
                 Destroy(enemy.gameObject);
                 
             }

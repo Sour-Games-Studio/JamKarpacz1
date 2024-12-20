@@ -201,6 +201,7 @@ public class Items : MonoBehaviour
         inputField.text = "";
         WishMachineOnOff(false);
         Invoke("LoadNextLevel", 3f);
+        player.UpdateStats();
         Asses[0].Play();
     }
     public void Button2()
@@ -239,6 +240,7 @@ public class Items : MonoBehaviour
         inputField.text = "";
         WishMachineOnOff(false);
         Invoke("LoadNextLevel", 3f);
+        player.UpdateStats();
         Asses[1].Play();
     }
     public void Button3()
@@ -277,6 +279,7 @@ public class Items : MonoBehaviour
         inputField.text = "";
         WishMachineOnOff(false);
         Invoke("LoadNextLevel", 3f);
+        player.UpdateStats();
         Asses[2].Play();
     }
 

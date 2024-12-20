@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+using System.Collections.Generic;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isWaveEnd = false;
     public int killCount = 0;
-    public float health = 6;
+    public float health = 4;
     private float maxHealth;
     private bool isInvincible = false;
     private bool canDash = true;
@@ -26,13 +27,15 @@ public class PlayerMovement : MonoBehaviour
     public int Direction = 0;
 
     [SerializeField] private Animator animator;
-
+    [SerializeField] private List<GameObject> Hearts;
+    [SerializeField] private TMP_Text DamageText;
+    [SerializeField] private TMP_Text SpeedText;
     private void Awake()
     {
         meleeAttack = GetComponent<MeleeAttack>();
         rangedAttack = GetComponent<RangedAttack>();
         moveSpeed = PlayerPrefs.HasKey("moveSpeed") ? PlayerPrefs.GetFloat("moveSpeed") : 4f;
-        health = PlayerPrefs.HasKey("health") ? PlayerPrefs.GetFloat("health") : 6f;
+        health = PlayerPrefs.HasKey("health") ? PlayerPrefs.GetFloat("health") : 4f;
         rangedAttack.attackDamage = PlayerPrefs.HasKey("rangedAttackDamage") ? PlayerPrefs.GetFloat("rangedAttackDamage") : 1f;
         meleeAttack.attackDamage = PlayerPrefs.HasKey("meleeAttackDamage") ? PlayerPrefs.GetFloat("meleeAttackDamage") : 2f;
     }
@@ -43,10 +46,12 @@ public class PlayerMovement : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Kacper")
         {
             moveSpeed = 4f;
-            health = 6f;
+            health = 4f;
             rangedAttack.attackDamage = 1f;
             meleeAttack.attackDamage = rangedAttack.attackDamage * 2f;
         }
+
+        UpdateStats();
     }
 
     void Update()
@@ -108,6 +113,37 @@ public class PlayerMovement : MonoBehaviour
        
         //indek 0 is 0 degrees, 1 is 45 degrees, 2 is 90 degrees, 3 is 135 degrees, 4 is 180 degrees, 5 is 225 degrees, 6 is 270 degrees, 7 is 315 degrees
         Debug.Log(Direction + " direction");
+    }
+
+    public void VisuallyUpdateHealth()
+    {
+        switch (health)
+        {
+            case 4:
+                Hearts[0].SetActive(true);
+                Hearts[1].SetActive(true);
+                Hearts[2].SetActive(true);
+                Hearts[3].SetActive(true);
+                break;
+            case 3:
+                Hearts[0].SetActive(true);
+                Hearts[1].SetActive(true);
+                Hearts[2].SetActive(true);
+                Hearts[3].SetActive(false);
+                break;
+            case 2:
+                Hearts[0].SetActive(true);
+                Hearts[1].SetActive(true);
+                Hearts[2].SetActive(false);
+                Hearts[3].SetActive(false);
+                break;
+            case 1:
+                Hearts[0].SetActive(true);
+                Hearts[1].SetActive(false);
+                Hearts[2].SetActive(false);
+                Hearts[3].SetActive(false);
+                break;
+        }
     }
 
     void ProcessInputs()
@@ -199,6 +235,7 @@ public void TakeDamagePlayer(float damage)
 {
     if(!isInvincible){
         health -= damage;
+            VisuallyUpdateHealth();
         //Debug.Log("Player took " + damage + " damage");
         //Debug.Log(health + "health after takedamage");
         StartCoroutine(InvincibilityFrames(2f));
@@ -235,6 +272,7 @@ public void TakeDamagePlayer(float damage)
         {
             health += healthGained;
         }
+        VisuallyUpdateHealth();
     }
 
     void updateMeleeDamage(float damageGained)
@@ -248,5 +286,12 @@ public void TakeDamagePlayer(float damage)
     void updateSpeed(float speedGained)
     {
         moveSpeed += speedGained;
-    }   
+    }
+    
+
+    public void UpdateStats()
+    {
+        SpeedText.text = ""+moveSpeed;
+        DamageText.text = "" + meleeAttack.attackDamage;
+    }
 }
