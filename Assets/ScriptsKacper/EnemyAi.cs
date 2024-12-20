@@ -52,7 +52,7 @@ public class EnemyAi : MonoBehaviour
         }
 
         //checking if collides with player
-        if (Vector3.Distance(player.transform.position, this.transform.position) < 1.5f)
+        if (Vector3.Distance(player.transform.position, this.transform.position) < 2.5f)
         {
             player.GetComponent<PlayerMovement>().TakeDamagePlayer(1);
         }
@@ -74,11 +74,11 @@ public class EnemyAi : MonoBehaviour
                 //spawn ammoStuck amount of ammon on the ground
                 for (int i = 0; i < ammoStuck; i++)
                 {
-                    Instantiate(ogur, this.transform.position + new Vector3(0,2,0), Quaternion.identity);
+                    Instantiate(ogur, this.transform.position + new Vector3(0,1,0), Quaternion.identity);
                 }
             }
             Debug.Log("Enemy died");
-            GetComponent<PlayerMovement>().killCount++;
+            player.GetComponent<PlayerMovement>().killCount++;
             Destroy(this.gameObject);
         }
     }
