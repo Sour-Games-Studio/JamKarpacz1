@@ -36,25 +36,25 @@ public class FakeLoadingSceneBehaviour : MonoBehaviour
 
     private void noDots()
     {
-        LoadText.text = "Loading";
+        LoadText.text = "£adowanie";
         Invoke("oneDot", 0.5f);
     }
 
     private void oneDot()
     {
-        LoadText.text = "Loading.";
+        LoadText.text = "£adowanie.";
         Invoke("twoDots", 0.5f);
     }
 
     private void twoDots()
     {
-        LoadText.text = "Loading..";
+        LoadText.text = "£adowanie..";
         Invoke("threeDots", 0.5f);
     }
 
     private void threeDots()
     {
-        LoadText.text = "Loading...";
+        LoadText.text = "£adowanie...";
         Invoke("noDots", 0.5f);
     }
 

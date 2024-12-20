@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashDistance = 5f;
     public Transform Center;
 
-
+    public bool isWaveEnd = false;
 
     public float health = 6;
     private float maxHealth;
@@ -21,13 +23,26 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove = true;
 
-
+    private void Awake()
+    {
+        meleeAttack = GetComponent<MeleeAttack>();
+        rangedAttack = GetComponent<RangedAttack>();
+        moveSpeed = PlayerPrefs.HasKey("moveSpeed") ? PlayerPrefs.GetFloat("moveSpeed") : 4f;
+        health = PlayerPrefs.HasKey("health") ? PlayerPrefs.GetFloat("health") : 6f;
+        rangedAttack.attackDamage = PlayerPrefs.HasKey("rangedAttackDamage") ? PlayerPrefs.GetFloat("rangedAttackDamage") : 1f;
+        meleeAttack.attackDamage = PlayerPrefs.HasKey("meleeAttackDamage") ? PlayerPrefs.GetFloat("meleeAttackDamage") : 2f;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        meleeAttack = GetComponent<MeleeAttack>();
-        rangedAttack = GetComponent<RangedAttack>();
         maxHealth = health;
+        if (SceneManager.GetActiveScene().name == "Kacper")
+        {
+            moveSpeed = 4f;
+            health = 6f;
+            rangedAttack.attackDamage = 1f;
+            meleeAttack.attackDamage = rangedAttack.attackDamage * 2f;
+        }
     }
 
     void Update()
@@ -37,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         ProcessInputs();
-
-
+        
+        
         //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)
