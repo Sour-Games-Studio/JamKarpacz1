@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashDistance = 5f;
     public Transform Center;
 
-
+    public bool isWaveEnd = false;
 
     public float health = 6;
     private float maxHealth;
@@ -53,10 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
         ProcessInputs();
         
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            SceneManager.LoadScene("Kacper2");
-        }
+        
         //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)
