@@ -13,9 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private RangedAttack rangedAttack;
     private float dashDistance = 5f;
     public Transform Center;
-    public int killCount = 0;
+
     public bool isWaveEnd = false;
-    [SerializeField] public static int level = 1;
+
     public float health = 6;
     private float maxHealth;
     private bool isInvincible = false;
@@ -27,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
     {
         meleeAttack = GetComponent<MeleeAttack>();
         rangedAttack = GetComponent<RangedAttack>();
-        moveSpeed = PlayerPrefs.GetFloat("moveSpeed");
-        health = PlayerPrefs.GetFloat("health");
-        rangedAttack.attackDamage = PlayerPrefs.GetFloat("rangedAttackDamage");
-        meleeAttack.attackDamage = PlayerPrefs.GetFloat("meleeAttackDamage");
+        moveSpeed = PlayerPrefs.HasKey("moveSpeed") ? PlayerPrefs.GetFloat("moveSpeed") : 4f;
+        health = PlayerPrefs.HasKey("health") ? PlayerPrefs.GetFloat("health") : 6f;
+        rangedAttack.attackDamage = PlayerPrefs.HasKey("rangedAttackDamage") ? PlayerPrefs.GetFloat("rangedAttackDamage") : 1f;
+        meleeAttack.attackDamage = PlayerPrefs.HasKey("meleeAttackDamage") ? PlayerPrefs.GetFloat("meleeAttackDamage") : 2f;
     }
     void Start()
     {
@@ -53,16 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
         ProcessInputs();
         
-        if(killCount >= GameObject.FindGameObjectsWithTag("Enemy").Length)
-        {
-            isWaveEnd = true;
-            level++;
-        }
-        else if(killCount < GameObject.FindGameObjectsWithTag("Enemy").Length)
-        {
-            isWaveEnd= false;
-        }
-
+        
         //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)
