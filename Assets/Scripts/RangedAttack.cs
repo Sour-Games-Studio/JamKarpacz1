@@ -6,14 +6,14 @@ using TMPro;
 public class RangedAttack : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private float attackRange = 0.1f;
     [SerializeField] public float attackDamage = 1f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRate = 2f;
     private float nextAttackTime = 0f;
 
-    [SerializeField] public float bulletSpeed = 1000f;
+    [SerializeField] public float bulletSpeed = 100f;
 
     public int ammoMax = 3;
     public int ammoCurrent = 3;
