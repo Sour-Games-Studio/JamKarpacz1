@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,13 +23,26 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove = true;
 
-
+    private void Awake()
+    {
+        meleeAttack = GetComponent<MeleeAttack>();
+        rangedAttack = GetComponent<RangedAttack>();
+        moveSpeed = PlayerPrefs.GetFloat("moveSpeed");
+        health = PlayerPrefs.GetFloat("health");
+        rangedAttack.attackDamage = PlayerPrefs.GetFloat("rangedAttackDamage");
+        meleeAttack.attackDamage = PlayerPrefs.GetFloat("meleeAttackDamage");
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        meleeAttack = GetComponent<MeleeAttack>();
-        rangedAttack = GetComponent<RangedAttack>();
         maxHealth = health;
+        if (SceneManager.GetActiveScene().name == "Kacper")
+        {
+            moveSpeed = 4f;
+            health = 6f;
+            rangedAttack.attackDamage = 1f;
+            meleeAttack.attackDamage = rangedAttack.attackDamage * 2f;
+        }
     }
 
     void Update()
@@ -37,8 +52,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         ProcessInputs();
-
-
+        
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene("Kacper2");
+        }
         //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)
