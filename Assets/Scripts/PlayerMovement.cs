@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove = true;
 
+    public int Direction = 0;
+
+    [SerializeField] private Animator animator;
+
     private void Awake()
     {
         meleeAttack = GetComponent<MeleeAttack>();
@@ -84,11 +88,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void RotateSprite(){
-        float angle = ReturnAngle();
+        //float angle = ReturnAngle();
+        //get movement direction
+        animator.SetInteger("Direction",Direction = moveDirection.z > 0 ? 0 : moveDirection.z < 0 ? 2 : moveDirection.x > 0 ? 1 : moveDirection.x < 0 ? 3 : Direction);
 
-        //depending on angle value, choose one of 8 sprites and return value from 0 to 7 when angle is from -180 to 189
-        int spriteIndex = (int)Mathf.Round((angle + 180) / 45);
-        Debug.Log(spriteIndex);
+
+        //depending on angle value, choose one of 4 sprites and return value from 0 to 3 when angle is from -180 to 180, but consider i want index 0 to be from- -45 to 45, 1 from 45 to 135, 2 from 135 to 180 and -180 to -135, 3 from -135 to -45
+       
+        //indek 0 is 0 degrees, 1 is 45 degrees, 2 is 90 degrees, 3 is 135 degrees, 4 is 180 degrees, 5 is 225 degrees, 6 is 270 degrees, 7 is 315 degrees
+        Debug.Log(Direction + " direction");
     }
 
     void ProcessInputs()
