@@ -90,6 +90,7 @@ public class EnemyAi : MonoBehaviour
             {
                 player.GetComponent<RangedAttack>().ammoCurrent++;
             }
+            player.GetComponent<PlayerMovement>().killCount++;
             Destroy(this.gameObject);
         }
     }
