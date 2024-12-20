@@ -16,6 +16,7 @@ public class Items : MonoBehaviour
     [SerializeField] private TMP_Text text3;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private PlayerMovement player;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -60,13 +61,21 @@ public class Items : MonoBehaviour
         WishMachine();
 
         //inicjacja maszyny
-        if(UnityEngine.Input.GetKeyDown(KeyCode.I))
+
+    }
+    public void WishMachineOnOff(bool onOff)
+    {
+        if(onOff)
         {
             player.canMove = false;
             inputField.gameObject.SetActive(true);
         }
+        else if(!onOff)
+        {
+            player.canMove = true;
+            inputField.gameObject.SetActive(false);
+        }
     }
-
     public void WishMachine()
     { 
         string input;
@@ -166,8 +175,7 @@ public class Items : MonoBehaviour
         }
 
         inputField.text = "";
-        inputField.gameObject.SetActive(false);
-        player.canMove = true;
+        WishMachineOnOff(false);
     }
     public void Button2()
     {
@@ -199,8 +207,7 @@ public class Items : MonoBehaviour
         }
 
         inputField.text = "";
-        inputField.gameObject.SetActive(false);
-        player.canMove = true;
+        WishMachineOnOff(false);
     }
     public void Button3()
     {
@@ -232,7 +239,6 @@ public class Items : MonoBehaviour
         }
 
         inputField.text = "";
-        inputField.gameObject.SetActive(false);
-        player.canMove = true;
+        WishMachineOnOff(false);
     }
 }
