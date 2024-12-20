@@ -153,9 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   Center: {fileID: 6062213705315888087}
-  isWaveEnd: 0
   health: 6
-  canMove: 1
 --- !u!143 &3945647277293041085
 CharacterController:
   m_ObjectHideFlags: 0

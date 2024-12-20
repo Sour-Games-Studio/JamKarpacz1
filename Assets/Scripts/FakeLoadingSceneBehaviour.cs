@@ -9,6 +9,8 @@ public class FakeLoadingSceneBehaviour : MonoBehaviour
     [SerializeField] private GameObject LoadTextObject;
     [SerializeField] private GameObject PressAnyButtonText;
     [SerializeField] private TMP_Text LoadText;
+    [SerializeField] private AudioSource LoadingAss;
+    [SerializeField] private AudioSource FinishedAss;
     private bool Loaded;
 
     private void Start()
@@ -19,6 +21,8 @@ public class FakeLoadingSceneBehaviour : MonoBehaviour
 
     private void FinishLoading()
     {
+        LoadingAss.Stop();
+        FinishedAss.Play();
         Loaded = true;
         LoadTextObject.SetActive(false);
         PressAnyButtonText.SetActive(true);
