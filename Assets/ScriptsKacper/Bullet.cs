@@ -32,10 +32,7 @@ public class Bullet : MonoBehaviour
             Instantiate(ogur, this.transform.position+ new Vector3(0,0.2f,0), Quaternion.identity);
             Destroy(this.gameObject);
         }
-        else if (other.CompareTag("lvl1"))
-        {
-            return;
-        }
+
 
         if (other.tag == owner)
         {

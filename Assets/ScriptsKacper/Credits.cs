@@ -14,7 +14,7 @@ public class Credits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.position += new Vector3(0, 0.1f, 0);
+        this.gameObject.transform.position += new Vector3(0, 0.4f, 0);
         if(Input.anyKeyDown)
         {
             SceneManager.LoadScene("MainMenu");

@@ -32,7 +32,7 @@ public class FakeLoadingSceneBehaviour : MonoBehaviour
     {
         if (Input.anyKeyDown && Loaded)
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("TestLevel");
         }
     }
 
@@ -40,25 +40,25 @@ public class FakeLoadingSceneBehaviour : MonoBehaviour
 
     private void noDots()
     {
-        LoadText.text = "£adowanie";
+        LoadText.text = "ï¿½adowanie";
         Invoke("oneDot", 0.5f);
     }
 
     private void oneDot()
     {
-        LoadText.text = "£adowanie.";
+        LoadText.text = "ï¿½adowanie.";
         Invoke("twoDots", 0.5f);
     }
 
     private void twoDots()
     {
-        LoadText.text = "£adowanie..";
+        LoadText.text = "ï¿½adowanie..";
         Invoke("threeDots", 0.5f);
     }
 
     private void threeDots()
     {
-        LoadText.text = "£adowanie...";
+        LoadText.text = "ï¿½adowanie...";
         Invoke("noDots", 0.5f);
     }
 
