@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform Center;
 
     public bool isWaveEnd = false;
-
+    public int killCount = 0;
     public float health = 6;
     private float maxHealth;
     private bool isInvincible = false;
@@ -52,8 +52,16 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         ProcessInputs();
-        
-        
+        if (killCount >= GameObject.FindGameObjectsWithTag("Enemy").Length)
+        {
+            isWaveEnd = true;
+        }
+        else if (killCount < GameObject.FindGameObjectsWithTag("Enemy").Length)
+        {
+            isWaveEnd = false;
+        }
+
+
         //print(Input.GetAxis("Fire1"));
 
         if (Input.GetAxis("Fire1")>0)

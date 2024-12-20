@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class Items : MonoBehaviour
 {
@@ -153,7 +154,7 @@ public class Items : MonoBehaviour
             PlayerPrefs.SetFloat("rangedAttackDamage", player.GetComponent<RangedAttack>().attackDamage);
             Debug.LogWarning("guzik dziala");
             words.Remove(text1.text);
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if(text1.text == "Nitro" || text1.text == "Silnik" || text1.text == "Paliwo" || text1.text == "Wiatrak" || text1.text == "Opona"|| text1.text == "Czerwona kredka" || text1.text == "Bateria" || text1.text == "Akumulator")
         {
@@ -208,6 +209,7 @@ public class Items : MonoBehaviour
 
         inputField.text = "";
         WishMachineOnOff(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void Button3()
     {
@@ -240,5 +242,6 @@ public class Items : MonoBehaviour
 
         inputField.text = "";
         WishMachineOnOff(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
